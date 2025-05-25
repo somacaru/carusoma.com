@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CarusoMA Website
 
-## Getting Started
+This is the official website for CarusoMA, built with [Next.js](https://nextjs.org) and optimized for Windows 11.
 
-First, run the development server:
+## System Requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Windows 11 (version 24H2 or later)
+- Node.js 18.x or later
+- PowerShell 7 or later
+- Git for Windows
+
+## Development Environment Setup
+
+1. **Install Node.js**
+   - Download and install Node.js from [nodejs.org](https://nodejs.org)
+   - Recommended version: 18.x LTS or later
+
+2. **Install Git for Windows**
+   - Download from [git-scm.com](https://git-scm.com/download/win)
+   - Use the default installation options
+
+3. **Clone the Repository**
+   ```powershell
+   git clone https://github.com/yourusername/carusoma.com.git
+   cd carusoma.com
+   ```
+
+4. **Install Dependencies**
+   ```powershell
+   npm install
+   ```
+
+5. **Start Development Server**
+   ```powershell
+   npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+carusoma.com/
+├── src/
+│   ├── app/              # Next.js app directory
+│   │   ├── about/       # About page
+│   │   ├── services/    # Services page
+│   │   ├── resources/   # Resources page
+│   │   ├── contact/     # Contact page
+│   │   └── page.tsx     # Home page
+│   └── components/      # Reusable components
+├── public/              # Static assets
+└── package.json         # Project dependencies
+```
 
-## Learn More
+## Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Next.js 14.1.0
+- React 18.2.0
+- TypeScript
+- Tailwind CSS
+- ESLint
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Create a new branch for your feature
+2. Make your changes
+3. Submit a pull request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+The site is configured for deployment on Vercel. For more details, see the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
+
+## Support
+
+For Windows 11 specific issues:
+- Ensure you're running the latest Windows updates
+- Use PowerShell 7 for all terminal commands
+- If you encounter path-related issues, use forward slashes (/) in your code and backslashes (\\) in PowerShell commands
+
+## License
+
+[Add your license information here]
