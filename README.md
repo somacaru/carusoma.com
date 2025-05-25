@@ -21,7 +21,7 @@ This is the official website for CarusoMA, built with [Next.js](https://nextjs.o
 
 3. **Clone the Repository**
    ```powershell
-   git clone https://github.com/yourusername/carusoma.com.git
+   git clone https://github.com/somacaru/carusoma.com.git
    cd carusoma.com
    ```
 
