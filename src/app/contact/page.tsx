@@ -35,7 +35,7 @@ export default function Contact() {
               Contact Us
             </h1>
             <p className="text-xl max-w-3xl mx-auto">
-              We&apos;re here to help protect your digital future. Reach out today for a consultation.
+gf              We&apos;re here to help protect your digital future. Reach out today for a consultation.
             </p>
           </div>
         </div>
