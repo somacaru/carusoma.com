@@ -35,7 +35,7 @@ export default function Contact() {
               Contact Us
             </h1>
             <p className="text-xl max-w-3xl mx-auto">
-gf              We&apos;re here to help protect your digital future. Reach out today for a consultation.
+              We&apos;re here to help protect your digital future. Reach out today for a consultation.
             </p>
           </div>
         </div>
@@ -198,7 +198,7 @@ gf              We&apos;re here to help protect your digital future. Reach out t
                     <div className="ml-3">
                       <h3 className="text-lg font-medium text-gray-900">Service Area</h3>
                       <p className="mt-1 text-gray-600">
-                        Serving businesses in [Your Local Area]
+                        Serving businesses in the Phoenix, Scottsdale, Tempe, Chandler, Gilbert, and Mesa metropolitan areas
                       </p>
                     </div>
                   </div>
