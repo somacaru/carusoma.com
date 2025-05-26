@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ErrorState from './components/ErrorState';
 
 const blogPosts = [
   {
@@ -158,18 +159,7 @@ export default async function Resources() {
           </div>
 
           {newsData.status === 'error' ? (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-              <h3 className="text-lg font-semibold text-red-800 mb-2">
-                {newsData.error}
-              </h3>
-              <p className="text-red-600 mb-4">{newsData.message}</p>
-              <button
-                onClick={() => window.location.reload()}
-                className="bg-red-100 text-red-800 px-4 py-2 rounded-md hover:bg-red-200 transition-colors"
-              >
-                Try Again
-              </button>
-            </div>
+            <ErrorState error={newsData.error || 'Error'} message={newsData.message || 'An error occurred'} />
           ) : newsData.news.length === 0 ? (
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
               <p className="text-gray-600">No news articles available at the moment.</p>
