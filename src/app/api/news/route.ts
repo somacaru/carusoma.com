@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server';
 import Parser from 'rss-parser';
 
-const parser = new Parser();
+const parser = new Parser({
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (compatible; CarusomaBot/1.0; +https://carusoma.com)',
+  },
+});
 
 interface FeedItem {
   title?: string;
@@ -32,9 +36,28 @@ export async function GET() {
       setTimeout(() => reject(new Error('Request timeout')), 5000);
     });
 
-    const feedPromise = parser.parseURL('https://feeds.feedburner.com/TheHackersNews');
-    
-    const feed = await Promise.race([feedPromise, timeoutPromise]) as any;
+    // Try alternative feed URL if the main one fails
+    const feedUrls = [
+      'https://feeds.feedburner.com/TheHackersNews',
+      'https://thehackernews.com/feeds/posts/default',
+      'https://thehackernews.com/feeds/posts/default?alt=rss'
+    ];
+
+    let feed = null;
+    let lastError = null;
+
+    for (const url of feedUrls) {
+      try {
+        const feedPromise = parser.parseURL(url);
+        feed = await Promise.race([feedPromise, timeoutPromise]) as any;
+        if (feed && feed.items && feed.items.length > 0) {
+          break;
+        }
+      } catch (error) {
+        console.error(`Failed to fetch from ${url}:`, error);
+        lastError = error;
+      }
+    }
 
     if (!feed || !feed.items || feed.items.length === 0) {
       throw new FeedParseError('No news items found in the feed');
@@ -56,56 +79,111 @@ export async function GET() {
       };
     });
 
-    return NextResponse.json({ 
-      news,
-      lastUpdated: new Date().toISOString(),
-      status: 'success'
-    });
+    return new NextResponse(
+      JSON.stringify({ 
+        news,
+        lastUpdated: new Date().toISOString(),
+        status: 'success'
+      }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
+    );
   } catch (error) {
     console.error('Error fetching news:', error);
 
     // Handle specific error types
     if (error instanceof FeedFetchError) {
-      return NextResponse.json(
-        { 
+      return new NextResponse(
+        JSON.stringify({ 
           error: 'Failed to fetch news feed',
           message: error.message,
           status: 'error'
-        },
-        { status: 503 }
+        }),
+        {
+          status: 503,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
     if (error instanceof FeedParseError) {
-      return NextResponse.json(
-        { 
+      return new NextResponse(
+        JSON.stringify({ 
           error: 'Failed to parse news feed',
           message: error.message,
           status: 'error'
-        },
-        { status: 422 }
+        }),
+        {
+          status: 422,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
     if (error instanceof Error && error.message === 'Request timeout') {
-      return NextResponse.json(
-        { 
+      return new NextResponse(
+        JSON.stringify({ 
           error: 'Request timeout',
           message: 'The news feed request took too long to complete',
           status: 'error'
-        },
-        { status: 504 }
+        }),
+        {
+          status: 504,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
     // Generic error handler
-    return NextResponse.json(
-      { 
+    return new NextResponse(
+      JSON.stringify({ 
         error: 'Internal server error',
         message: 'An unexpected error occurred while fetching news',
         status: 'error'
-      },
-      { status: 500 }
+      }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
     );
   }
+}
+
+// Handle OPTIONS request for CORS
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
 } 
