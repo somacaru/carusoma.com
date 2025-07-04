@@ -33,7 +33,7 @@ export default function IncidentResponsePlan() {
           <div className="prose prose-lg max-w-none">
             
             <p className="text-xl text-gray-700 mb-8">
-              When a cyberattack hits your business, the first 24 hours determine whether you'll recover quickly or face months of operational chaos. Yet 73% of businesses don't have a tested incident response plan. This guide will change that.
+              When a cyberattack hits your business, the first 24 hours determine whether you&apos;ll recover quickly or face months of operational chaos. Yet 73% of businesses don&apos;t have a tested incident response plan. This guide will change that.
             </p>
 
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 my-8">
@@ -49,7 +49,7 @@ export default function IncidentResponsePlan() {
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What Is an Incident Response Plan?</h2>
             
             <p className="text-gray-700 mb-6">
-              An incident response plan is your organization's playbook for handling cybersecurity incidents. It defines who does what, when, and how during a security breach, malware infection, or other cyber emergency. Think of it as your fire evacuation plan, but for digital disasters.
+              An incident response plan is your organization&apos;s playbook for handling cybersecurity incidents. It defines who does what, when, and how during a security breach, malware infection, or other cyber emergency. Think of it as your fire evacuation plan, but for digital disasters.
             </p>
 
             <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4">The Six Phases of Incident Response</h3>
@@ -95,7 +95,7 @@ export default function IncidentResponsePlan() {
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Your 90-Day Implementation Plan</h2>
 
             <p className="text-gray-700 mb-8">
-              Building an effective incident response plan doesn't happen overnight, but it doesn't need to take a year either. Here's a realistic 90-day timeline that balances thorough preparation with business urgency.
+              Building an effective incident response plan doesn&apos;t happen overnight, but it doesn&apos;t need to take a year either. Here&apos;s a realistic 90-day timeline that balances thorough preparation with business urgency.
             </p>
 
             <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg p-8 my-12">
@@ -244,9 +244,9 @@ export default function IncidentResponsePlan() {
             </p>
 
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 my-8">
-              <h4 className="text-lg font-semibold text-yellow-800 mb-2">💡 Pro Tip: The "Golden Hour"</h4>
+              <h4 className="text-lg font-semibold text-yellow-800 mb-2">💡 Pro Tip: The &quot;Golden Hour&quot;</h4>
               <p className="text-yellow-700">
-                The first hour after incident detection is critical. Have a "golden hour" checklist that covers immediate containment steps, key notifications, and evidence preservation. This ensures crucial actions aren't forgotten in the heat of the moment.
+                The first hour after incident detection is critical. Have a &quot;golden hour&quot; checklist that covers immediate containment steps, key notifications, and evidence preservation. This ensures crucial actions aren&apos;t forgotten in the heat of the moment.
               </p>
             </div>
 
@@ -260,7 +260,7 @@ export default function IncidentResponsePlan() {
               
               <div className="border-l-4 border-red-500 pl-6">
                 <h4 className="font-bold text-gray-900 mb-2">Inadequate Training</h4>
-                <p className="text-gray-700">Team members who don't understand their roles will make poor decisions during an incident.</p>
+                <p className="text-gray-700">Team members who don&apos;t understand their roles will make poor decisions during an incident.</p>
               </div>
               
               <div className="border-l-4 border-red-500 pl-6">
@@ -277,11 +277,11 @@ export default function IncidentResponsePlan() {
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Bottom Line</h2>
             
             <p className="text-gray-700 mb-6">
-              An incident response plan isn't just a compliance checkbox—it's your lifeline during a crisis. The time to build your plan is now, before you need it.
+              An incident response plan isn&apos;t just a compliance checkbox—it&apos;s your lifeline during a crisis. The time to build your plan is now, before you need it.
             </p>
             
             <p className="text-gray-700 mb-8">
-              Remember: the goal isn't perfection on day one. Start with a basic plan and improve it through testing, training, and real-world experience. A good plan today is better than a perfect plan next year.
+              Remember: the goal isn&apos;t perfection on day one. Start with a basic plan and improve it through testing, training, and real-world experience. A good plan today is better than a perfect plan next year.
             </p>
 
             <div className="bg-blue-600 text-white rounded-lg p-8 my-12">

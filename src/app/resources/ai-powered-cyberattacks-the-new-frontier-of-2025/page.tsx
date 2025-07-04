@@ -49,7 +49,7 @@ export default function AIPoweredCyberattacks() {
             </p>
             
             <ul className="list-disc pl-6 mb-6 text-gray-700">
-              <li>Analyze your company's writing style from public communications</li>
+              <li>Analyze your company&apos;s writing style from public communications</li>
               <li>Reference recent company events or news</li>
               <li>Mimic the tone and language of specific executives</li>
               <li>Generate thousands of variations to avoid detection</li>
@@ -58,14 +58,14 @@ export default function AIPoweredCyberattacks() {
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 my-8">
               <h4 className="text-lg font-semibold text-yellow-800 mb-2">⚠️ Real-World Example</h4>
               <p className="text-yellow-700">
-                In early 2025, a Phoenix-based manufacturing company received what appeared to be an urgent email from their "CEO" requesting immediate wire transfer approval. The AI-generated message referenced specific internal projects and used the CEO's typical communication style. Only a verification call prevented a $2.3 million loss.
+                In early 2025, a Phoenix-based manufacturing company received what appeared to be an urgent email from their &quot;CEO&quot; requesting immediate wire transfer approval. The AI-generated message referenced specific internal projects and used the CEO&apos;s typical communication style. Only a verification call prevented a $2.3 million loss.
               </p>
             </div>
 
             <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4">2. Deepfake Voice and Video Attacks</h3>
             
             <p className="text-gray-700 mb-6">
-              AI can now clone voices and create convincing video calls using just minutes of sample audio or video. These "deepfake" technologies enable:
+              AI can now clone voices and create convincing video calls using just minutes of sample audio or video. These &quot;deepfake&quot; technologies enable:
             </p>
             
             <ul className="list-disc pl-6 mb-6 text-gray-700">
@@ -91,7 +91,7 @@ export default function AIPoweredCyberattacks() {
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Protecting Your Business: A Strategic Response</h2>
 
             <p className="text-gray-700 mb-6">
-              Fighting AI with traditional security measures is like bringing a knife to a gunfight. Here's how to level the playing field:
+              Fighting AI with traditional security measures is like bringing a knife to a gunfight. Here&apos;s how to level the playing field:
             </p>
 
             <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Implement AI-Powered Defense Systems</h3>
@@ -122,12 +122,12 @@ export default function AIPoweredCyberattacks() {
             <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Advanced Employee Training</h3>
             
             <p className="text-gray-700 mb-6">
-              Traditional security awareness training isn't enough anymore. Your team needs to understand:
+              Traditional security awareness training isn&apos;t enough anymore. Your team needs to understand:
             </p>
             
             <ul className="list-disc pl-6 mb-6 text-gray-700">
               <li>How to identify AI-generated content and communications</li>
-              <li>The importance of verification procedures, even with "trusted" sources</li>
+              <li>The importance of verification procedures, even with &quot;trusted&quot; sources</li>
               <li>Red flags specific to deepfake audio and video</li>
               <li>Proper incident reporting procedures for suspicious activity</li>
             </ul>
@@ -175,7 +175,7 @@ export default function AIPoweredCyberattacks() {
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Bottom Line</h2>
             
             <p className="text-gray-700 mb-6">
-              AI-powered cyberattacks aren't a future threat—they're happening now. The businesses that survive and thrive will be those that adapt their security strategies to match the sophistication of modern threats.
+              AI-powered cyberattacks aren&apos;t a future threat—they&apos;re happening now. The businesses that survive and thrive will be those that adapt their security strategies to match the sophistication of modern threats.
             </p>
             
             <p className="text-gray-700 mb-8">

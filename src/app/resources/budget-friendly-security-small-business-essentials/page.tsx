@@ -16,7 +16,7 @@ export default function BudgetFriendlySecurity() {
               Budget-Friendly Security: Small Business Essentials
             </h1>
             <p className="text-xl text-blue-100 mb-6">
-              Essential cybersecurity measures that don't break the bank - a practical guide for small business owners.
+              Essential cybersecurity measures that don&apos;t break the bank - a practical guide for small business owners.
             </p>
             <div className="flex items-center justify-center text-blue-100">
               <span className="mr-4">May 28, 2025</span>
@@ -33,7 +33,7 @@ export default function BudgetFriendlySecurity() {
           <div className="prose prose-lg max-w-none">
             
             <p className="text-xl text-gray-700 mb-8">
-              As a small business owner, you're already juggling countless priorities and watching every dollar. The last thing you want to hear is that you need to spend thousands more on cybersecurity. Here's the good news: effective protection doesn't require an enterprise budget.
+              As a small business owner, you&apos;re already juggling countless priorities and watching every dollar. The last thing you want to hear is that you need to spend thousands more on cybersecurity. Here&apos;s the good news: effective protection doesn&apos;t require an enterprise budget.
             </p>
 
             <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
@@ -49,7 +49,7 @@ export default function BudgetFriendlySecurity() {
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Small Business Security Reality</h2>
             
             <p className="text-gray-700 mb-6">
-              Small businesses face unique challenges when it comes to cybersecurity. You don't have dedicated IT staff, enterprise budgets, or complex infrastructure. But here's what you do have working in your favor:
+              Small businesses face unique challenges when it comes to cybersecurity. You don&apos;t have dedicated IT staff, enterprise budgets, or complex infrastructure. But here&apos;s what you do have working in your favor:
             </p>
 
             <ul className="list-disc pl-6 mb-6 text-gray-700">
@@ -198,7 +198,7 @@ export default function BudgetFriendlySecurity() {
                           <strong>Cost: $50-200/month total</strong>
                         </p>
                         <p className="text-gray-700 mb-4">
-                          Ransomware can't hold you hostage if you have good backups. Follow the 3-2-1 rule: 3 copies, 2 different media, 1 offsite.
+                          Ransomware can&apos;t hold you hostage if you have good backups. Follow the 3-2-1 rule: 3 copies, 2 different media, 1 offsite.
                         </p>
                         <h4 className="font-semibold text-gray-900 mb-2">Cloud Backup Solutions:</h4>
                         <ul className="list-disc pl-6 text-gray-700">
@@ -450,7 +450,7 @@ export default function BudgetFriendlySecurity() {
 
             <div className="space-y-6 my-8">
               <div className="border-l-4 border-red-500 pl-6">
-                <h4 className="font-bold text-gray-900 mb-2">"We're too small to be targeted"</h4>
+                <h4 className="font-bold text-gray-900 mb-2">&quot;We&apos;re too small to be targeted&quot;</h4>
                 <p className="text-gray-700">43% of cyberattacks target small businesses. Criminals often prefer smaller targets with weaker defenses.</p>
               </div>
               
@@ -465,25 +465,25 @@ export default function BudgetFriendlySecurity() {
               </div>
               
               <div className="border-l-4 border-red-500 pl-6">
-                <h4 className="font-bold text-gray-900 mb-2">Delaying security "until later"</h4>
-                <p className="text-gray-700">Cybercriminals don't wait for convenient timing. Basic protection should be implemented immediately.</p>
+                <h4 className="font-bold text-gray-900 mb-2">Delaying security &quot;until later&quot;</h4>
+                <p className="text-gray-700">Cybercriminals don&apos;t wait for convenient timing. Basic protection should be implemented immediately.</p>
               </div>
             </div>
 
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Bottom Line</h2>
             
             <p className="text-gray-700 mb-6">
-              Cybersecurity doesn't have to be overwhelming or expensive for small businesses. Start with the basics, implement gradually, and focus on the measures that provide the biggest risk reduction for your investment.
+              Cybersecurity doesn&apos;t have to be overwhelming or expensive for small businesses. Start with the basics, implement gradually, and focus on the measures that provide the biggest risk reduction for your investment.
             </p>
             
             <p className="text-gray-700 mb-8">
-              Remember: perfect security is impossible, but good security is absolutely achievable within any budget. The goal isn't to become impenetrable—it's to become a harder target than the business next door.
+              Remember: perfect security is impossible, but good security is absolutely achievable within any budget. The goal isn&apos;t to become impenetrable—it&apos;s to become a harder target than the business next door.
             </p>
 
             <div className="bg-blue-600 text-white rounded-lg p-8 my-12">
               <h3 className="text-2xl font-bold mb-4">Need Help Getting Started?</h3>
               <p className="text-blue-100 mb-6">
-                CarusoMA offers budget-friendly security consultations designed specifically for small businesses. We'll help you prioritize your security investments and implement the most cost-effective protections first.
+                CarusoMA offers budget-friendly security consultations designed specifically for small businesses. We&apos;ll help you prioritize your security investments and implement the most cost-effective protections first.
               </p>
               <Link
                 href="/contact"
