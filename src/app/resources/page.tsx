@@ -1,85 +1,111 @@
 import Link from 'next/link';
 import ErrorState from './components/ErrorState';
+import { headers } from 'next/headers';
 
 const blogPosts = [
   {
-    title: 'Top 5 Cybersecurity Threats for Small Businesses',
-    excerpt: 'Learn about the most common security threats facing small businesses today and how to protect against them.',
-    date: 'March 15, 2024',
-    readTime: '5 min read',
-    category: 'Security Threats',
+    title: 'AI-Powered Cyberattacks: The New Frontier of 2025',
+    excerpt: 'How artificial intelligence is being weaponized by cybercriminals and what businesses need to know to stay protected.',
+    date: 'June 28, 2025',
+    readTime: '8 min read',
+    category: 'Emerging Threats',
   },
   {
-    title: 'Understanding Ransomware: What Every Business Owner Needs to Know',
-    excerpt: 'A comprehensive guide to ransomware attacks, their impact, and effective prevention strategies.',
-    date: 'March 10, 2024',
-    readTime: '7 min read',
+    title: 'Zero Trust Architecture: Is Your Business Ready?',
+    excerpt: 'A comprehensive guide to implementing Zero Trust security models in small to medium businesses.',
+    date: 'June 20, 2025',
+    readTime: '12 min read',
+    category: 'Security Architecture',
+  },
+  {
+    title: 'Ransomware Evolution: RaaS and Triple Extortion Tactics',
+    excerpt: 'Understanding the latest ransomware trends including Ransomware-as-a-Service and multi-stage extortion methods.',
+    date: 'June 15, 2025',
+    readTime: '10 min read',
     category: 'Ransomware',
   },
   {
-    title: 'Is Your Wi-Fi Network Secure? A Quick Checklist',
-    excerpt: 'Essential steps to ensure your business Wi-Fi network is properly secured against unauthorized access.',
-    date: 'March 5, 2024',
-    readTime: '4 min read',
-    category: 'Network Security',
+    title: 'Supply Chain Security: Protecting Your Third-Party Risks',
+    excerpt: 'How to assess and mitigate cybersecurity risks from vendors, contractors, and supply chain partners.',
+    date: 'June 8, 2025',
+    readTime: '9 min read',
+    category: 'Risk Management',
   },
   {
-    title: 'The Importance of Multi-Factor Authentication (MFA)',
-    excerpt: 'Why MFA is crucial for business security and how to implement it effectively.',
-    date: 'February 28, 2024',
+    title: 'Cloud Security Misconfiguration: The #1 Data Breach Cause',
+    excerpt: 'Common cloud security mistakes and a checklist to ensure your cloud infrastructure is properly secured.',
+    date: 'May 30, 2025',
+    readTime: '7 min read',
+    category: 'Cloud Security',
+  },
+  {
+    title: 'Phishing 2025: Deepfakes and AI-Generated Social Engineering',
+    excerpt: 'The evolution of phishing attacks using deepfake technology and AI-generated content to fool employees.',
+    date: 'May 22, 2025',
     readTime: '6 min read',
-    category: 'Authentication',
+    category: 'Social Engineering',
   },
   {
-    title: 'What to Do Immediately After a Suspected Phishing Attack',
-    excerpt: 'Step-by-step guide for responding to and mitigating the impact of phishing attacks.',
-    date: 'February 20, 2024',
-    readTime: '5 min read',
+    title: 'Incident Response Plan: Your 90-Day Implementation Guide',
+    excerpt: 'Step-by-step guide to building a comprehensive incident response plan that actually works when you need it.',
+    date: 'May 15, 2025',
+    readTime: '15 min read',
     category: 'Incident Response',
   },
   {
-    title: 'Choosing the Right Backup Solution for Your Business',
-    excerpt: 'A detailed comparison of backup solutions and best practices for data protection.',
-    date: 'February 15, 2024',
+    title: 'Remote Work Security: Beyond VPNs in 2025',
+    excerpt: 'Modern approaches to securing remote workforces including SASE, endpoint detection, and behavioral analytics.',
+    date: 'May 8, 2025',
+    readTime: '11 min read',
+    category: 'Remote Security',
+  },
+  {
+    title: 'Compliance Automation: SOC 2, ISO 27001, and GDPR Made Simple',
+    excerpt: 'How to streamline compliance processes and reduce the burden of security certifications.',
+    date: 'April 25, 2025',
+    readTime: '13 min read',
+    category: 'Compliance',
+  },
+  {
+    title: 'Employee Security Training That Actually Works',
+    excerpt: 'Evidence-based approaches to security awareness training that change behavior, not just tick boxes.',
+    date: 'April 18, 2025',
     readTime: '8 min read',
-    category: 'Data Protection',
+    category: 'Security Training',
+  },
+  {
+    title: 'Budget-Friendly Security: Small Business Essentials',
+    excerpt: 'Essential cybersecurity measures that don\'t break the bank - a practical guide for small business owners.',
+    date: 'May 28, 2025',
+    readTime: '10 min read',
+    category: 'Budget Security',
+  },
+  {
+    title: 'Dark Web Monitoring: Should Your Business Be Concerned?',
+    excerpt: 'Understanding dark web threats, monitoring services, and when they make sense for your business.',
+    date: 'April 3, 2025',
+    readTime: '7 min read',
+    category: 'Threat Intelligence',
   },
 ];
 
 const categories = [
-  'Security Threats',
+  'Emerging Threats',
+  'Security Architecture', 
   'Ransomware',
+  'Risk Management',
+  'Cloud Security',
+  'Social Engineering',
+  'Incident Response',
+  'Remote Security',
+  'Compliance',
+  'Security Training',
+  'Budget Security',
+  'Threat Intelligence',
   'Network Security',
   'Authentication',
-  'Incident Response',
   'Data Protection',
-  'Compliance',
   'Best Practices',
-];
-
-// Daily security news topics
-const dailyNews = [
-  {
-    title: 'Latest Security Breach: Major Tech Company Affected',
-    excerpt: 'Breaking news about a significant security incident affecting thousands of users.',
-    date: 'Today',
-    category: 'Breaking News',
-    source: 'Security Weekly',
-  },
-  {
-    title: 'New Zero-Day Vulnerability Discovered',
-    excerpt: 'Security researchers have identified a critical vulnerability in popular software.',
-    date: 'Today',
-    category: 'Vulnerabilities',
-    source: 'Threat Post',
-  },
-  {
-    title: 'Government Issues New Security Guidelines',
-    excerpt: 'Updated security recommendations for businesses and organizations.',
-    date: 'Today',
-    category: 'Compliance',
-    source: 'CISA',
-  },
 ];
 
 interface NewsItem {
@@ -101,10 +127,13 @@ interface NewsResponse {
 
 async function getNews(): Promise<NewsResponse> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/news`, {
-      next: { revalidate: 3600 } // Revalidate every hour
+    const headersList = await headers();
+    const host = headersList.get('host');
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const res = await fetch(`${protocol}://${host}/api/news`, {
+      next: { revalidate: 3600 }
     });
-    
+
     if (!res.ok) {
       const errorData = await res.json();
       return {
@@ -126,7 +155,6 @@ async function getNews(): Promise<NewsResponse> {
     };
   }
 }
-
 export default async function Resources() {
   const newsData = await getNews();
 
@@ -149,10 +177,10 @@ export default async function Resources() {
       {/* Latest Security News Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex justify-between items-center text-blue-500">
             <h2 className="text-3xl font-bold">Latest Security News</h2>
             {newsData.lastUpdated && (
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-gray-900">
                 Last updated: {new Date(newsData.lastUpdated).toLocaleTimeString()}
               </span>
             )}
@@ -162,7 +190,7 @@ export default async function Resources() {
             <ErrorState error={newsData.error || 'Error'} message={newsData.message || 'An error occurred'} />
           ) : newsData.news.length === 0 ? (
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
-              <p className="text-gray-600">No news articles available at the moment.</p>
+              <p className="text-gray-900">No news articles available at the moment.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -172,8 +200,8 @@ export default async function Resources() {
                     <span className="text-sm text-blue-600 font-medium">{item.category}</span>
                     <span className="text-sm text-gray-500">{item.date}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-600 mb-4">{item.excerpt}</p>
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h3>
+                  <p className="text-gray-900 mb-4">{item.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500">Source: {item.source}</span>
                     <a
@@ -231,19 +259,19 @@ export default async function Resources() {
                       </div>
                       <h2 className="text-xl font-bold mb-2">
                         <Link
-                          href={`/resources/${post.title.toLowerCase().replace(/\s+/g, '-')}`}
+                          href={`/resources/${post.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-')}`}
                           className="text-gray-900 hover:text-blue-600"
                         >
                           {post.title}
                         </Link>
                       </h2>
-                      <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                      <p className="text-gray-900 mb-4">{post.excerpt}</p>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-blue-600 font-medium">
                           {post.category}
                         </span>
                         <Link
-                          href={`/resources/${post.title.toLowerCase().replace(/\s+/g, '-')}`}
+                          href={`/resources/${post.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-')}`}
                           className="text-blue-600 hover:text-blue-800 font-medium"
                         >
                           Read More →

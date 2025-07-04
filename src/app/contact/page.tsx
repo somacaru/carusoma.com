@@ -149,7 +149,7 @@ export default function Contact() {
                     </div>
                     <div className="ml-3">
                       <h3 className="text-lg font-medium text-gray-900">Phone</h3>
-                      <p className="mt-1 text-gray-600">(480) 788-5419</p>
+                      <p className="mt-1 text-gray-900">(480) 788-5419</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -170,7 +170,7 @@ export default function Contact() {
                     </div>
                     <div className="ml-3">
                       <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                      <p className="mt-1 text-gray-600">info@carusoma.com</p>
+                      <p className="mt-1 text-gray-900">info@carusoma.com</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -197,7 +197,7 @@ export default function Contact() {
                     </div>
                     <div className="ml-3">
                       <h3 className="text-lg font-medium text-gray-900">Service Area</h3>
-                      <p className="mt-1 text-gray-600">
+                      <p className="mt-1 text-gray-900">
                         Serving businesses in the Phoenix, Scottsdale, Tempe, Chandler, Gilbert, and Mesa metropolitan areas
                       </p>
                     </div>
@@ -208,9 +208,9 @@ export default function Contact() {
               <div className="bg-white rounded-lg shadow-lg p-8">
                 <h2 className="text-2xl font-bold mb-6">Business Hours</h2>
                 <div className="space-y-2">
-                  <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                  <p className="text-gray-600">Saturday: By Appointment</p>
-                  <p className="text-gray-600">Sunday: Closed</p>
+                  <p className="text-gray-900">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                  <p className="text-gray-900">Saturday: By Appointment</p>
+                  <p className="text-gray-900">Sunday: Closed</p>
                 </div>
               </div>
             </div>

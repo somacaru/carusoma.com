@@ -57,7 +57,7 @@ export default function Home() {
               >
                 <div className="text-4xl mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="text-gray-900">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -69,31 +69,31 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Why Choose CarusoMA?</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-900 max-w-2xl mx-auto">
               We combine industry expertise with personalized service to deliver security solutions that work for your business.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-colDSA s-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🎯</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Proactive Approach</h3>
-              <p className="text-gray-600">We identify and address vulnerabilities before they become threats.</p>
+              <p className="text-gray-900">We identify and address vulnerabilities before they become threats.</p>
             </div>
             <div className="text-center">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">💡</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Expert Team</h3>
-              <p className="text-gray-600">Certified professionals with years of industry experience.</p>
+              <p className="text-gray-900">Certified professionals with years of industry experience.</p>
             </div>
             <div className="text-center">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🤝</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Tailored Solutions</h3>
-              <p className="text-gray-600">Custom security strategies that fit your business needs.</p>
+              <p className="text-gray-900">Custom security strategies that fit your business needs.</p>
             </div>
           </div>
         </div>

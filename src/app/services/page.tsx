@@ -93,7 +93,7 @@ export default function Services() {
                       <h2 className="text-2xl font-bold text-gray-900 mb-2">
                         {service.title}
                       </h2>
-                      <p className="text-gray-600 mb-6">{service.description}</p>
+                      <p className="text-gray-900 mb-6">{service.description}</p>
                       <ul className="space-y-3">
                         {service.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-start">
@@ -127,7 +127,7 @@ export default function Services() {
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to strengthen your defenses?</h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-900 mb-8 max-w-2xl mx-auto">
             Contact us for a personalized security strategy tailored to your business needs.
           </p>
           <Link
