@@ -54,10 +54,10 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-900 mb-4">
                 CarusoMA was founded with a clear mission: to help businesses navigate the complex world of cybersecurity with confidence. We understand that every organization faces unique security challenges, and we&apos;re committed to providing tailored solutions that address these specific needs.
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-900">
                 Our team brings together decades of combined experience in cybersecurity, risk management, and compliance. We&apos;ve helped organizations of all sizes strengthen their security posture and protect their valuable assets.
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function About() {
               >
                 <div className="text-4xl mb-4">{value.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <p className="text-gray-900">{value.description}</p>
               </div>
             ))}
           </div>
@@ -98,7 +98,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Expertise</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-900 max-w-2xl mx-auto">
               Our team holds industry-leading certifications and brings extensive experience in cybersecurity.
             </p>
           </div>
