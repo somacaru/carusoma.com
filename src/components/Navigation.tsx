@@ -15,12 +15,12 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-lg">
+    <nav className="bg-white shadow-lg border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="text-2xl font-bold text-blue-600">
+              <Link href="/" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
                 CarusoMA
               </Link>
             </div>
@@ -32,14 +32,14 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 href={item.path}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 {item.name}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 hover:shadow-md transition-all duration-200"
             >
               Get Started
             </Link>
@@ -49,7 +49,7 @@ const Navigation = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
             >
               <span className="sr-only">Open main menu</span>
               {!isMenuOpen ? (
@@ -96,7 +96,7 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 href={item.path}
-                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
@@ -104,7 +104,7 @@ const Navigation = () => {
             ))}
             <Link
               href="/contact"
-              className="bg-blue-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-700"
+              className="bg-blue-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Get Started

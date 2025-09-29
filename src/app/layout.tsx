@@ -3,7 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-inter'
+});
 
 export const metadata: Metadata = {
   title: "CarusoMA - Expert Cybersecurity Consulting",
@@ -17,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.variable} font-sans`}>
         <Navigation />
         <main className="min-h-screen">
           {children}
