@@ -164,10 +164,10 @@ export default async function Resources() {
       <section className="bg-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Security Resources & Insights
             </h1>
-            <p className="text-xl max-w-3xl mx-auto">
+            <p className="text-xl max-w-3xl mx-auto leading-relaxed text-blue-100">
               Stay informed about the latest cybersecurity trends, threats, and best practices to protect your business.
             </p>
           </div>
@@ -177,10 +177,10 @@ export default async function Resources() {
       {/* Latest Security News Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center text-blue-500">
-            <h2 className="text-3xl font-bold">Latest Security News</h2>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">Latest Security News</h2>
             {newsData.lastUpdated && (
-              <span className="text-sm text-gray-900">
+              <span className="text-sm text-gray-600">
                 Last updated: {new Date(newsData.lastUpdated).toLocaleTimeString()}
               </span>
             )}
@@ -190,25 +190,25 @@ export default async function Resources() {
             <ErrorState error={newsData.error || 'Error'} message={newsData.message || 'An error occurred'} />
           ) : newsData.news.length === 0 ? (
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
-              <p className="text-gray-900">No news articles available at the moment.</p>
+              <p className="text-gray-700">No news articles available at the moment.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {newsData.news.map((item, index) => (
-                <div key={index} className="bg-gray-50 rounded-lg p-6 shadow-sm">
+                <div key={index} className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-100">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm text-blue-600 font-medium">{item.category}</span>
                     <span className="text-sm text-gray-500">{item.date}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h3>
-                  <p className="text-gray-900 mb-4">{item.excerpt}</p>
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 leading-tight">{item.title}</h3>
+                  <p className="text-gray-700 mb-4 leading-relaxed">{item.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500">Source: {item.source}</span>
                     <a
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 font-medium"
+                      className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
                     >
                       Read More →
                     </a>
@@ -226,14 +226,14 @@ export default async function Resources() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-bold mb-4">Categories</h2>
+              <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100">
+                <h2 className="text-xl font-bold mb-4 text-gray-900">Categories</h2>
                 <ul className="space-y-2">
                   {categories.map((category, index) => (
                     <li key={index}>
                       <Link
                         href={`/resources/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="text-gray-600 hover:text-blue-600"
+                        className="text-gray-600 hover:text-blue-600 transition-colors"
                       >
                         {category}
                       </Link>
@@ -249,30 +249,30 @@ export default async function Resources() {
                 {blogPosts.map((post, index) => (
                   <article
                     key={index}
-                    className="bg-white rounded-lg shadow-md overflow-hidden"
+                    className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden border border-gray-100"
                   >
                     <div className="p-6">
-                      <div className="flex items-center text-sm text-gray-500 mb-2">
+                      <div className="flex items-center text-sm text-gray-500 mb-3">
                         <span>{post.date}</span>
                         <span className="mx-2">•</span>
                         <span>{post.readTime}</span>
                       </div>
-                      <h2 className="text-xl font-bold mb-2">
+                      <h2 className="text-xl font-bold mb-3 leading-tight">
                         <Link
                           href={`/resources/${post.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-')}`}
-                          className="text-gray-900 hover:text-blue-600"
+                          className="text-gray-900 hover:text-blue-600 transition-colors"
                         >
                           {post.title}
                         </Link>
                       </h2>
-                      <p className="text-gray-900 mb-4">{post.excerpt}</p>
+                      <p className="text-gray-700 mb-4 leading-relaxed">{post.excerpt}</p>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-blue-600 font-medium">
                           {post.category}
                         </span>
                         <Link
                           href={`/resources/${post.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-')}`}
-                          className="text-blue-600 hover:text-blue-800 font-medium"
+                          className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
                         >
                           Read More →
                         </Link>
@@ -295,7 +295,7 @@ export default async function Resources() {
                 <h2 className="text-3xl font-bold text-white mb-4">
                   Stay Updated on Security
                 </h2>
-                <p className="text-xl text-blue-100 mb-8">
+                <p className="text-xl text-blue-100 mb-8 leading-relaxed">
                   Subscribe to our newsletter for the latest security insights and updates.
                 </p>
                 <form className="max-w-md mx-auto">
@@ -303,11 +303,11 @@ export default async function Resources() {
                     <input
                       type="email"
                       placeholder="Enter your email"
-                      className="flex-1 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                     />
                     <button
                       type="submit"
-                      className="bg-white text-blue-600 px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors"
+                      className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 hover:shadow-lg transition-all duration-200"
                     >
                       Subscribe
                     </button>
