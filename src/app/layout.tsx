@@ -44,7 +44,7 @@ export default function RootLayout({
                 <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
                 <ul className="space-y-2 text-gray-300">
                   <li>Email: info@carusoma.com</li>
-                  <li>Phone: (555) 123-4567</li>
+                  <li>Phone: (480) 788-5419</li>
                 </ul>
               </div>
             </div>
