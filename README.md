@@ -68,6 +68,16 @@ carusoma.com/
 - Tailwind CSS
 - ESLint
 
+## Contact Form System
+
+The contact form supports both local file storage (development) and Google Cloud Storage (production).
+
+- **Development**: Submissions saved to `/data/contact-submissions.json`
+- **Production**: Submissions saved to Google Cloud Storage bucket
+- **Admin Dashboard**: View submissions at `/admin`
+
+See [CONTACT_FORM_SETUP.md](./CONTACT_FORM_SETUP.md) for detailed setup instructions.
+
 ## Deployment
 
 ### Google Cloud Run Deployment (Recommended)

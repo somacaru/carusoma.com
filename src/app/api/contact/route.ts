@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, readFile, mkdir } from 'fs/promises';
-import { existsSync } from 'fs';
-import path from 'path';
+import { readSubmissions, writeSubmissions } from './storage';
 
 interface ContactSubmission {
   id: string;
@@ -12,42 +10,6 @@ interface ContactSubmission {
   message: string;
   submittedAt: string;
   read: boolean;
-}
-
-const SUBMISSIONS_DIR = path.join(process.cwd(), 'data');
-const SUBMISSIONS_FILE = path.join(SUBMISSIONS_DIR, 'contact-submissions.json');
-
-// Ensure data directory exists
-async function ensureDataDir() {
-  if (!existsSync(SUBMISSIONS_DIR)) {
-    await mkdir(SUBMISSIONS_DIR, { recursive: true });
-  }
-}
-
-// Read submissions from file
-async function readSubmissions(): Promise<ContactSubmission[]> {
-  try {
-    await ensureDataDir();
-    if (!existsSync(SUBMISSIONS_FILE)) {
-      return [];
-    }
-    const data = await readFile(SUBMISSIONS_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    console.error('Error reading submissions:', error);
-    return [];
-  }
-}
-
-// Write submissions to file
-async function writeSubmissions(submissions: ContactSubmission[]): Promise<void> {
-  try {
-    await ensureDataDir();
-    await writeFile(SUBMISSIONS_FILE, JSON.stringify(submissions, null, 2), 'utf-8');
-  } catch (error) {
-    console.error('Error writing submissions:', error);
-    throw error;
-  }
 }
 
 // POST - Handle form submission
