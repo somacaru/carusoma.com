@@ -1,16 +1,16 @@
 # How to Find Your Google Cloud Project ID
 
-## Quick Commands
+## Quick Commands (PowerShell)
 
 ### 1. Check Current Project
-```bash
+```powershell
 gcloud config get-value project
 ```
 
 This shows the project ID that's currently set in your gcloud configuration.
 
 ### 2. List All Your Projects
-```bash
+```powershell
 gcloud projects list
 ```
 
@@ -20,14 +20,14 @@ This shows all projects you have access to, including:
 - **Project Number** (internal number)
 
 ### 3. List Projects with More Details
-```bash
+```powershell
 gcloud projects list --format="table(projectId,name,projectNumber)"
 ```
 
 This gives you a cleaner table view.
 
 ### 4. Search for Projects with "carusoma" in the Name
-```bash
+```powershell
 gcloud projects list --filter="name:carusoma OR projectId:carusoma"
 ```
 
@@ -53,13 +53,13 @@ Your project ID might be:
 
 Once you find your project ID, set it:
 
-```bash
+```powershell
 gcloud config set project YOUR_PROJECT_ID
 ```
 
 ## Verify It's Set Correctly
 
-```bash
+```powershell
 # Check current project
 gcloud config get-value project
 
@@ -71,7 +71,7 @@ gcloud run services list --region=us-central1
 
 Create a new project:
 
-```bash
+```powershell
 # Create a new project
 gcloud projects create carusoma-com --name="CarusoMA Website"
 
@@ -87,15 +87,18 @@ gcloud billing projects link carusoma-com --billing-account=YOUR_BILLING_ACCOUNT
 
 Your deployment scripts might already have the project ID:
 
-```bash
-# Check deploy.sh
-grep PROJECT_ID deploy.sh
+```powershell
+# Check deploy.ps1 (PowerShell script)
+Select-String -Path deploy.ps1 -Pattern "PROJECT_ID"
 
-# Check deploy.ps1
-grep PROJECT_ID deploy.ps1
+# Or view the file
+Get-Content deploy.ps1 | Select-String "PROJECT_ID"
+
+# Check deploy.sh (bash script - if you have Git Bash)
+Select-String -Path deploy.sh -Pattern "PROJECT_ID"
 
 # Check cloudbuild.yaml
-grep PROJECT_ID cloudbuild.yaml
+Select-String -Path cloudbuild.yaml -Pattern "PROJECT_ID"
 ```
 
 Based on your files, it looks like it might be: `carusoma-production-website`
