@@ -1,9 +1,9 @@
-# Google Cloud Run Deployment Script for CarusoMA Website (PowerShell)
+# Google Cloud Run Deployment Script for Arcane Digital Shield Website (PowerShell)
 
 # Configuration
-$PROJECT_ID = "carusoma-production-website"  # Replace with your actual project ID
+$PROJECT_ID = "arcanedigitalshield-production"  # Replace with your actual project ID
 $REGION = "us-central1"
-$SERVICE_NAME = "carusoma-website"
+$SERVICE_NAME = "arcanedigitalshield-website"
 $IMAGE_NAME = "gcr.io/$PROJECT_ID/$SERVICE_NAME"
 
 Write-Host "🚀 Starting deployment to Google Cloud Run..." -ForegroundColor Green

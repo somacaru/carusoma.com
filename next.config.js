@@ -4,7 +4,7 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   images: {
-    domains: ['carusoma.com'],
+    domains: ['arcanedigitalshield.com'],
     formats: ['image/avif', 'image/webp'],
   },
   compiler: {

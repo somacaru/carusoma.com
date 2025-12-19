@@ -287,7 +287,7 @@ export default function IncidentResponsePlan() {
             <div className="bg-blue-600 text-white rounded-lg p-8 my-12">
               <h3 className="text-2xl font-bold mb-4">Ready to Build Your Incident Response Plan?</h3>
               <p className="text-blue-100 mb-6">
-                CarusoMA can help you develop, implement, and test a comprehensive incident response plan tailored to your business needs. Our experts have guided dozens of organizations through this critical process.
+                Arcane Digital Shield can help you develop, implement, and test a comprehensive incident response plan tailored to your business needs. Our experts have guided dozens of organizations through this critical process.
               </p>
               <Link
                 href="/contact"

@@ -483,7 +483,7 @@ export default function BudgetFriendlySecurity() {
             <div className="bg-blue-600 text-white rounded-lg p-8 my-12">
               <h3 className="text-2xl font-bold mb-4">Need Help Getting Started?</h3>
               <p className="text-blue-100 mb-6">
-                CarusoMA offers budget-friendly security consultations designed specifically for small businesses. We&apos;ll help you prioritize your security investments and implement the most cost-effective protections first.
+                Arcane Digital Shield offers budget-friendly security consultations designed specifically for small businesses. We&apos;ll help you prioritize your security investments and implement the most cost-effective protections first.
               </p>
               <Link
                 href="/contact"

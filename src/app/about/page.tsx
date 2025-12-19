@@ -24,11 +24,10 @@ const values = [
 ];
 
 const certifications = [
-  'CompTIA Security+',
-  'CISSP',
-  'AWS Security',
-  'Certified Ethical Hacker (CEH)',
-  'Certified Information Systems Auditor (CISA)',
+  'Security Analyst Professional Certificate (GPC)',
+  'Advanced Python Scripting for Cybersecurity',
+  'Cloud Associate (ICCA Certification)',
+  'INE Junior Pentester (In Progress)',
 ];
 
 export default function About() {
@@ -39,7 +38,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Why Choose CarusoMA?
+              Why Choose Arcane Digital Shield?
             </h1>
             <p className="text-xl max-w-3xl mx-auto leading-relaxed text-blue-100">
               We combine deep expertise with a commitment to excellence to deliver security solutions that work for your business.
@@ -55,7 +54,7 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Story</h2>
               <p className="text-gray-700 mb-6 leading-relaxed">
-                CarusoMA was founded with a clear mission: to help businesses navigate the complex world of cybersecurity with confidence. We understand that every organization faces unique security challenges, and we&apos;re committed to providing tailored solutions that address these specific needs.
+                Arcane Digital Shield was founded with a clear mission: to help businesses navigate the complex world of cybersecurity with confidence. We understand that every organization faces unique security challenges, and we&apos;re committed to providing tailored solutions that address these specific needs.
               </p>
               <p className="text-gray-700 leading-relaxed">
                 Our team brings together decades of combined experience in cybersecurity, risk management, and compliance. We&apos;ve helped organizations of all sizes strengthen their security posture and protect their valuable assets.
@@ -64,7 +63,7 @@ export default function About() {
             <div className="relative h-96 rounded-lg overflow-hidden">
               <Image
                 src="/images/team.jpg"
-                alt="CarusoMA Team"
+                alt="Arcane Digital Shield Team"
                 fill
                 className="object-cover"
                 priority

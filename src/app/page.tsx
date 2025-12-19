@@ -69,7 +69,7 @@ export default function Home() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-gray-900">Why Choose CarusoMA?</h2>
+            <h2 className="text-4xl font-bold mb-6 text-gray-900">Why Choose Arcane Digital Shield?</h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
               We combine industry expertise with personalized service to deliver security solutions that work for your business.
             </p>

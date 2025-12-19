@@ -1,10 +1,10 @@
-# Domain Mapping Script for CarusoMA Website
+# Domain Mapping Script for Arcane Digital Shield Website
 
-Write-Host "🌐 Setting up domain mapping for carusoma.com..." -ForegroundColor Green
+Write-Host "🌐 Setting up domain mapping for arcanedigitalshield.com..." -ForegroundColor Green
 
 # Configuration
-$SERVICE_NAME = "carusoma-website"
-$DOMAIN = "carusoma.com"
+$SERVICE_NAME = "arcanedigitalshield-website"
+$DOMAIN = "arcanedigitalshield.com"
 $REGION = "us-central1"
 
 # Check if domain mapping already exists

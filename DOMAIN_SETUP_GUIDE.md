@@ -1,10 +1,10 @@
-# Domain Setup Guide for carusoma.com
+# Domain Setup Guide for arcanedigitalshield.com
 
-This guide will help you map your custom domain `carusoma.com` to your Google Cloud Run service.
+This guide will help you map your custom domain `arcanedigitalshield.com` to your Google Cloud Run service.
 
 ## Current Status
 - ✅ Website deployed to Google Cloud Run
-- ✅ Service URL: https://carusoma-website-j2z6yswc3a-uc.a.run.app
+- ✅ Service URL: https://arcanedigitalshield-website-j2z6yswc3a-uc.a.run.app
 - ✅ Domain mapping created in Google Cloud
 
 ## Important: Nameserver Requirements
@@ -22,7 +22,7 @@ Domain verification through Google Search Console is optional for Cloud Run but 
 ### Google Search Console Verification
 1. Go to [Google Search Console](https://search.google.com/search-console)
 2. Sign in with your Google account (same account used for Google Cloud)
-3. Add your domain: `carusoma.com`
+3. Add your domain: `arcanedigitalshield.com`
 4. Choose verification method:
    - **DNS record**: Add TXT record to your domain's DNS (recommended)
    - **HTML file**: Download and upload to your domain
@@ -44,22 +44,22 @@ Add these DNS records to your domain registrar (GoDaddy):
 Add all four of these A records:
 
 ```
-Name: @ (or carusoma.com)
+Name: @ (or arcanedigitalshield.com)
 Type: A
 Value: 216.239.32.21
 TTL: 3600 (or default)
 
-Name: @ (or carusoma.com)
+Name: @ (or arcanedigitalshield.com)
 Type: A
 Value: 216.239.34.21
 TTL: 3600 (or default)
 
-Name: @ (or carusoma.com)
+Name: @ (or arcanedigitalshield.com)
 Type: A
 Value: 216.239.36.21
 TTL: 3600 (or default)
 
-Name: @ (or carusoma.com)
+Name: @ (or arcanedigitalshield.com)
 Type: A
 Value: 216.239.38.21
 TTL: 3600 (or default)
@@ -69,22 +69,22 @@ TTL: 3600 (or default)
 Add all four of these AAAA records:
 
 ```
-Name: @ (or carusoma.com)
+Name: @ (or arcanedigitalshield.com)
 Type: AAAA
 Value: 2001:4860:4802:32::15
 TTL: 3600 (or default)
 
-Name: @ (or carusoma.com)
+Name: @ (or arcanedigitalshield.com)
 Type: AAAA
 Value: 2001:4860:4802:34::15
 TTL: 3600 (or default)
 
-Name: @ (or carusoma.com)
+Name: @ (or arcanedigitalshield.com)
 Type: AAAA
 Value: 2001:4860:4802:36::15
 TTL: 3600 (or default)
 
-Name: @ (or carusoma.com)
+Name: @ (or arcanedigitalshield.com)
 Type: AAAA
 Value: 2001:4860:4802:38::15
 TTL: 3600 (or default)
@@ -100,7 +100,7 @@ TTL: 3600 (or default)
 
 ### DNS Record Tips for GoDaddy:
 - Use `@` in the Name field to refer to your root domain
-- If `@` doesn't work, try using `carusoma.com` or leave the field blank
+- If `@` doesn't work, try using `arcanedigitalshield.com` or leave the field blank
 - Make sure to add ALL the A and AAAA records above
 - Delete any existing A records that point to other IP addresses
 
@@ -112,8 +112,8 @@ Google Cloud Run automatically provisions SSL certificates for verified domains.
 
 Once DNS propagation is complete (can take up to 48 hours), test:
 
-- https://carusoma.com
-- https://www.carusoma.com
+- https://arcanedigitalshield.com
+- https://www.arcanedigitalshield.com
 
 ## Troubleshooting
 
@@ -126,7 +126,7 @@ Once DNS propagation is complete (can take up to 48 hours), test:
 2. **DNS Not Propagated**
    - DNS changes can take 24-48 hours
    - Use tools like `nslookup` or `dig` to check propagation
-   - Test with: `nslookup carusoma.com 8.8.8.8`
+   - Test with: `nslookup arcanedigitalshield.com 8.8.8.8`
 
 3. **SSL Certificate Issues**
    - SSL certificates are provisioned automatically after DNS verification
@@ -144,7 +144,7 @@ Once DNS propagation is complete (can take up to 48 hours), test:
 gcloud beta run domain-mappings list --region=us-central1
 
 # Check domain mapping status
-gcloud beta run domain-mappings describe --domain=carusoma.com --region=us-central1
+gcloud beta run domain-mappings describe --domain=arcanedigitalshield.com --region=us-central1
 
 # Check domain verification status (if you verified through Search Console)
 gcloud domains list-user-verified
@@ -154,15 +154,15 @@ gcloud domains list-user-verified
 
 ```powershell
 # Test DNS resolution
-nslookup carusoma.com
-nslookup www.carusoma.com
+nslookup arcanedigitalshield.com
+nslookup www.arcanedigitalshield.com
 
 # Test with Google's DNS server
-nslookup carusoma.com 8.8.8.8
+nslookup arcanedigitalshield.com 8.8.8.8
 
 # Test specific record types
-nslookup -type=A carusoma.com
-nslookup -type=AAAA carusoma.com
+nslookup -type=A arcanedigitalshield.com
+nslookup -type=AAAA arcanedigitalshield.com
 ```
 
 ## Expected Timeline
@@ -175,9 +175,9 @@ nslookup -type=AAAA carusoma.com
 ## Final Result
 
 After completion, your website will be accessible at:
-- **Primary**: https://carusoma.com
-- **Alternative**: https://www.carusoma.com
-- **Fallback**: https://carusoma-website-j2z6yswc3a-uc.a.run.app
+- **Primary**: https://arcanedigitalshield.com
+- **Alternative**: https://www.arcanedigitalshield.com
+- **Fallback**: https://arcanedigitalshield-website-j2z6yswc3a-uc.a.run.app
 
 ## Support
 

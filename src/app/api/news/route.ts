@@ -3,7 +3,7 @@ import Parser from 'rss-parser';
 
 const parser = new Parser({
   headers: {
-    'User-Agent': 'Mozilla/5.0 (compatible; CarusomaBot/1.0; +https://carusoma.com)',
+    'User-Agent': 'Mozilla/5.0 (compatible; ArcaneDigitalShieldBot/1.0; +https://arcanedigitalshield.com)',
   },
 });
 

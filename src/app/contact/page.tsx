@@ -11,29 +11,51 @@ export default function Contact() {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus({ type: null, message: '' });
 
     try {
-      // TODO: Implement actual form submission to backend
-      // For now, simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Simulate success
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        message: '',
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: data.message || 'Thank you for your message! We will get back to you soon.',
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          message: '',
+        });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Failed to send message. Please try again.',
+        });
+      }
     } catch (error) {
-      setSubmitStatus('error');
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.',
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -53,10 +75,10 @@ export default function Contact() {
       <section className="bg-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Contact Us
             </h1>
-            <p className="text-xl max-w-3xl mx-auto leading-relaxed text-blue-100">
+            <p className="text-xl max-w-3xl mx-auto">
               We&apos;re here to help protect your digital future. Reach out today for a consultation.
             </p>
           </div>
@@ -68,8 +90,22 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Send Us a Message</h2>
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+              
+              {/* Status Messages */}
+              {submitStatus.type && (
+                <div
+                  className={`mb-6 p-4 rounded-md ${
+                    submitStatus.type === 'success'
+                      ? 'bg-green-50 border border-green-200 text-green-800'
+                      : 'bg-red-50 border border-red-200 text-red-800'
+                  }`}
+                >
+                  <p className="font-medium">{submitStatus.message}</p>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -82,7 +118,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -96,7 +132,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -109,7 +145,7 @@ export default function Contact() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -122,7 +158,7 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -136,35 +172,23 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
-                
-                {submitStatus === 'success' && (
-                  <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
-                    Thank you for your message! We will get back to you soon.
-                  </div>
-                )}
-                
-                {submitStatus === 'error' && (
-                  <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
-                    Sorry, there was an error sending your message. Please try again or contact us directly.
-                  </div>
-                )}
               </form>
             </div>
 
             {/* Contact Information */}
             <div className="space-y-8">
-              <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <h2 className="text-2xl font-bold mb-6 text-gray-900">Contact Information</h2>
+              <div className="bg-white rounded-lg shadow-lg p-8">
+                <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
@@ -184,7 +208,7 @@ export default function Contact() {
                     </div>
                     <div className="ml-3">
                       <h3 className="text-lg font-medium text-gray-900">Phone</h3>
-                      <p className="mt-1 text-gray-700">(480) 788-5419</p>
+                      <p className="mt-1 text-gray-900">(480) 788-5419</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -205,7 +229,7 @@ export default function Contact() {
                     </div>
                     <div className="ml-3">
                       <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                      <p className="mt-1 text-gray-700">info@carusoma.com</p>
+                      <p className="mt-1 text-gray-900">info@arcanedigitalshield.com</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -232,7 +256,7 @@ export default function Contact() {
                     </div>
                     <div className="ml-3">
                       <h3 className="text-lg font-medium text-gray-900">Service Area</h3>
-                      <p className="mt-1 text-gray-700 leading-relaxed">
+                      <p className="mt-1 text-gray-900">
                         Serving businesses in the Phoenix, Scottsdale, Tempe, Chandler, Gilbert, and Mesa metropolitan areas
                       </p>
                     </div>
@@ -240,12 +264,12 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <h2 className="text-2xl font-bold mb-6 text-gray-900">Business Hours</h2>
+              <div className="bg-white rounded-lg shadow-lg p-8">
+                <h2 className="text-2xl font-bold mb-6">Business Hours</h2>
                 <div className="space-y-2">
-                  <p className="text-gray-700">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                  <p className="text-gray-700">Saturday: By Appointment</p>
-                  <p className="text-gray-700">Sunday: Closed</p>
+                  <p className="text-gray-900">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                  <p className="text-gray-900">Saturday: By Appointment</p>
+                  <p className="text-gray-900">Sunday: Closed</p>
                 </div>
               </div>
             </div>

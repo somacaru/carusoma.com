@@ -1,6 +1,6 @@
 # Google Cloud Deployment Setup Guide
 
-This guide will help you deploy your CarusoMA website to Google Cloud Run.
+This guide will help you deploy your Arcane Digital Shield website to Google Cloud Run.
 
 ## Prerequisites
 
@@ -83,14 +83,14 @@ chmod +x deploy.sh
 ### Manual Deployment
 ```bash
 # 1. Build the image
-docker build -t gcr.io/YOUR_PROJECT_ID/carusoma-website .
+docker build -t gcr.io/YOUR_PROJECT_ID/arcanedigitalshield-website .
 
 # 2. Push to Google Container Registry
-docker push gcr.io/YOUR_PROJECT_ID/carusoma-website
+docker push gcr.io/YOUR_PROJECT_ID/arcanedigitalshield-website
 
 # 3. Deploy to Cloud Run
-gcloud run deploy carusoma-website \
-  --image gcr.io/YOUR_PROJECT_ID/carusoma-website \
+gcloud run deploy arcanedigitalshield-website \
+  --image gcr.io/YOUR_PROJECT_ID/arcanedigitalshield-website \
   --region us-central1 \
   --platform managed \
   --allow-unauthenticated \
@@ -111,7 +111,7 @@ gcloud builds submit --config cloudbuild.yaml
 ### Environment Variables
 You can set environment variables in your Cloud Run service:
 ```bash
-gcloud run services update carusoma-website \
+gcloud run services update arcanedigitalshield-website \
   --set-env-vars NODE_ENV=production
 ```
 
@@ -123,7 +123,7 @@ To use a custom domain:
 
 ```bash
 gcloud run domain-mappings create \
-  --service carusoma-website \
+  --service arcanedigitalshield-website \
   --domain your-domain.com \
   --region us-central1
 ```
@@ -131,7 +131,7 @@ gcloud run domain-mappings create \
 ### Scaling Configuration
 Adjust scaling parameters:
 ```bash
-gcloud run services update carusoma-website \
+gcloud run services update arcanedigitalshield-website \
   --max-instances 20 \
   --min-instances 1 \
   --cpu 2 \
@@ -142,12 +142,12 @@ gcloud run services update carusoma-website \
 
 ### View Logs
 ```bash
-gcloud logs read --service=carusoma-website --limit=50
+gcloud logs read --service=arcanedigitalshield-website --limit=50
 ```
 
 ### Monitor Performance
 - Visit [Google Cloud Console](https://console.cloud.google.com/)
-- Navigate to Cloud Run > carusoma-website
+- Navigate to Cloud Run > arcanedigitalshield-website
 - View metrics and logs
 
 ## Cost Optimization
@@ -181,7 +181,7 @@ gcloud billing budgets list
    - Verify all dependencies are in package.json
 
 3. **Deployment Fails**
-   - Check logs: `gcloud logs read --service=carusoma-website`
+   - Check logs: `gcloud logs read --service=arcanedigitalshield-website`
    - Verify project ID is correct
    - Ensure APIs are enabled
 

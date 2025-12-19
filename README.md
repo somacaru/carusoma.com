@@ -1,6 +1,6 @@
-# CarusoMA Website
+# Arcane Digital Shield Website
 
-This is the official website for CarusoMA, built with [Next.js](https://nextjs.org) and optimized for Windows 11.
+This is the official website for Arcane Digital Shield, built with [Next.js](https://nextjs.org) and optimized for Windows 11.
 
 ## System Requirements
 
@@ -21,8 +21,8 @@ This is the official website for CarusoMA, built with [Next.js](https://nextjs.o
 
 3. **Clone the Repository**
    ```powershell
-   git clone https://github.com/somacaru/carusoma.com.git
-   cd carusoma.com
+   git clone https://github.com/somacaru/arcanedigitalshield.com.git
+   cd arcanedigitalshield.com
    ```
 
 4. **Install Dependencies**
@@ -40,7 +40,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Project Structure
 
 ```
-carusoma.com/
+arcanedigitalshield.com/
 ├── src/
 │   ├── app/              # Next.js app directory
 │   │   ├── about/       # About page
@@ -67,6 +67,16 @@ carusoma.com/
 - TypeScript
 - Tailwind CSS
 - ESLint
+
+## Contact Form System
+
+The contact form supports both local file storage (development) and Google Cloud Storage (production).
+
+- **Development**: Submissions saved to `/data/contact-submissions.json`
+- **Production**: Submissions saved to Google Cloud Storage bucket
+- **Admin Dashboard**: View submissions at `/admin`
+
+See [CONTACT_FORM_SETUP.md](./CONTACT_FORM_SETUP.md) for detailed setup instructions.
 
 ## Deployment
 
@@ -113,14 +123,14 @@ This project is configured for deployment on Google Cloud Run using Docker conta
 
 2. **Build and push the Docker image**
    ```bash
-   docker build -t gcr.io/YOUR_PROJECT_ID/carusoma-website .
-   docker push gcr.io/YOUR_PROJECT_ID/carusoma-website
+   docker build -t gcr.io/YOUR_PROJECT_ID/arcanedigitalshield-website .
+   docker push gcr.io/YOUR_PROJECT_ID/arcanedigitalshield-website
    ```
 
 3. **Deploy to Cloud Run**
    ```bash
-   gcloud run deploy carusoma-website \
-     --image gcr.io/YOUR_PROJECT_ID/carusoma-website \
+   gcloud run deploy arcanedigitalshield-website \
+     --image gcr.io/YOUR_PROJECT_ID/arcanedigitalshield-website \
      --region us-central1 \
      --platform managed \
      --allow-unauthenticated \
