@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import Parser from 'rss-parser';
+import { allFeeds, FeedSource } from './feeds.config';
 
 const parser = new Parser({
   headers: {
@@ -30,44 +31,11 @@ class FeedParseError extends Error {
   }
 }
 
-// Multiple feed sources for better coverage
-const feedSources = [
-  {
-    urls: [
-      'https://feeds.feedburner.com/TheHackersNews',
-      'https://thehackernews.com/feeds/posts/default',
-      'https://thehackernews.com/feeds/posts/default?alt=rss'
-    ],
-    name: 'The Hacker News',
-    category: 'Security News'
-  },
-  {
-    urls: [
-      'https://krebsonsecurity.com/feed/',
-      'https://feeds.feedburner.com/KrebsOnSecurity'
-    ],
-    name: 'Krebs on Security',
-    category: 'Security Research'
-  },
-  {
-    urls: [
-      'https://www.bleepingcomputer.com/feed/',
-      'https://feeds.feedburner.com/bleepingcomputer'
-    ],
-    name: 'BleepingComputer',
-    category: 'Security Updates'
-  },
-  {
-    urls: [
-      'https://threatpost.com/feed/',
-      'https://feeds.feedburner.com/threatpost'
-    ],
-    name: 'Threatpost',
-    category: 'Threat Intelligence'
-  }
-];
+// Feed sources are now imported from feeds.config.ts
+// This makes it easy to add new sources without modifying the API code
+const feedSources = allFeeds;
 
-async function fetchFromSource(source: typeof feedSources[0]): Promise<any[]> {
+async function fetchFromSource(source: FeedSource): Promise<any[]> {
   const timeoutPromise = new Promise((_, reject) => {
     setTimeout(() => reject(new Error('Request timeout')), 8000);
   });
@@ -78,7 +46,7 @@ async function fetchFromSource(source: typeof feedSources[0]): Promise<any[]> {
       const feed = await Promise.race([feedPromise, timeoutPromise]) as any;
       
       if (feed && feed.items && feed.items.length > 0) {
-        return feed.items.slice(0, 3).map((item: FeedItem) => ({
+        return feed.items.slice(0, 2).map((item: FeedItem) => ({
           title: item.title,
           excerpt: item.contentSnippet?.slice(0, 150) + '...' || 'No excerpt available',
           date: new Date(item.isoDate || item.pubDate || '').toLocaleDateString(),
@@ -116,9 +84,9 @@ export async function GET() {
       throw new FeedParseError('No news items found from any feed source');
     }
 
-    // Sort by date (newest first) and limit to 9 articles
+    // Sort by date (newest first) and limit to 12 articles for daily updates
     allNews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    const news = allNews.slice(0, 9);
+    const news = allNews.slice(0, 12);
 
     return new NextResponse(
       JSON.stringify({ 
@@ -134,7 +102,7 @@ export async function GET() {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type',
-          'Cache-Control': 'public, max-age=1800', // Cache for 30 minutes
+          'Cache-Control': 'public, max-age=3600, s-maxage=86400', // Cache for 1 hour, revalidate daily
         },
       }
     );

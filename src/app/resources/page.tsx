@@ -131,7 +131,7 @@ async function getNews(): Promise<NewsResponse> {
     const host = headersList.get('host');
     const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
     const res = await fetch(`${protocol}://${host}/api/news`, {
-      next: { revalidate: 3600 }
+      next: { revalidate: 86400 } // Revalidate daily (24 hours)
     });
 
     if (!res.ok) {
@@ -167,7 +167,7 @@ export default async function Resources() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Security Resources & Insights
             </h1>
-            <p className="text-xl max-w-3xl mx-auto leading-relaxed text-blue-100">
+            <p className="text-xl max-w-3xl mx-auto leading-relaxed text-white">
               Stay informed about the latest cybersecurity trends, threats, and best practices to protect your business.
             </p>
           </div>
@@ -295,7 +295,7 @@ export default async function Resources() {
                 <h2 className="text-3xl font-bold text-white mb-4">
                   Stay Updated on Security
                 </h2>
-                <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+                <p className="text-xl text-white mb-8 leading-relaxed">
                   Subscribe to our newsletter for the latest security insights and updates.
                 </p>
                 <form className="max-w-md mx-auto">

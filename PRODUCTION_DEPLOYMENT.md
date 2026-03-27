@@ -16,11 +16,13 @@ The system automatically detects the environment and uses the appropriate storag
 The system automatically detects whether to use Cloud Storage or local files:
 
 1. **Development Mode**: 
+   
    - Runs locally
    - Uses local file storage
    - No GCS setup needed
 
 2. **Production Mode** (Cloud Run):
+   
    - Detects `NODE_ENV=production` and `K_SERVICE` (Cloud Run environment variable)
    - Uses Google Cloud Storage if `GCS_BUCKET_NAME` is set
    - Falls back to local storage if GCS is unavailable
@@ -63,6 +65,7 @@ gcloud storage buckets add-iam-policy-binding gs://arcanedigitalshield-contact-s
 Update your `cloudbuild.yaml` or deployment script to set the bucket name:
 
 **Option A: In cloudbuild.yaml**
+
 ```yaml
 steps:
   # ... existing steps ...
@@ -78,6 +81,7 @@ steps:
 ```
 
 **Option B: After deployment**
+
 ```bash
 gcloud run services update arcanedigitalshield-website \
   --region=us-central1 \
@@ -100,10 +104,12 @@ gcloud builds submit --config cloudbuild.yaml
 
 1. **Submit a test form** on your production site
 2. **Check Cloud Storage**:
+   
    ```bash
    gcloud storage ls gs://arcanedigitalshield-contact-submissions/
    ```
 3. **View the file**:
+   
    ```bash
    gcloud storage cat gs://arcanedigitalshield-contact-submissions/contact-submissions.json
    ```
@@ -117,12 +123,14 @@ gcloud logging read "resource.type=cloud_run_revision AND resource.labels.servic
 ```
 
 Look for:
+
 - ✅ "Using Cloud Storage" messages
 - ❌ "Falling back to local storage" warnings
 
 ## Fallback Behavior
 
 If Cloud Storage is unavailable, the system will:
+
 1. Log a warning
 2. Fall back to local file storage
 3. Continue working (but data won't persist across restarts)
@@ -132,11 +140,13 @@ This ensures the contact form always works, even if GCS setup is incomplete.
 ## Admin Dashboard
 
 Access the admin dashboard at:
+
 ```
 https://your-domain.com/admin
 ```
 
 Features:
+
 - View all submissions
 - Filter unread messages
 - Mark as read/unread
@@ -147,16 +157,19 @@ Features:
 ### Submissions Not Persisting
 
 1. **Check bucket exists**:
+   
    ```bash
    gcloud storage buckets list --filter="name:arcanedigitalshield-contact-submissions"
    ```
 
 2. **Check permissions**:
+   
    ```bash
    gcloud storage buckets get-iam-policy gs://arcanedigitalshield-contact-submissions
    ```
 
 3. **Check environment variable**:
+   
    ```bash
    gcloud run services describe arcanedigitalshield-website \
      --region=us-central1 \
@@ -166,16 +179,18 @@ Features:
 ### Using Custom Bucket Name
 
 Set a custom bucket name:
+
 ```bash
 gcloud run services update arcanedigitalshield-website \
-  --region=us-central1 \
+  --region=us-central1 \aaaaaaaaaaaaaaaaaaaaaaaaaaawaad
   --set-env-vars="GCS_BUCKET_NAME=my-custom-bucket-name"
 ```
 
 ## Next Steps
 
 When you're ready to scale:
+
 - **Database migration**: Move to Cloud SQL or Firestore
 - **Email notifications**: Send alerts on new submissions
 - **Admin authentication**: Protect `/admin` with login
-- **Export functionality**: Export submissions to CSV/PDF
+- **Export functionality**: Export submissions to CSV/PDFa

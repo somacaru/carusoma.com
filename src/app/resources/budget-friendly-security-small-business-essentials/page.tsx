@@ -8,17 +8,17 @@ export default function BudgetFriendlySecurity() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="mb-4">
-              <span className="inline-block bg-blue-500 text-blue-100 px-3 py-1 rounded-full text-sm font-medium">
+              <span className="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                 Small Business
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Budget-Friendly Security: Small Business Essentials
             </h1>
-            <p className="text-xl text-blue-100 mb-6">
+            <p className="text-xl text-white mb-6">
               Essential cybersecurity measures that don&apos;t break the bank - a practical guide for small business owners.
             </p>
-            <div className="flex items-center justify-center text-blue-100">
+            <div className="flex items-center justify-center text-white">
               <span className="mr-4">May 28, 2025</span>
               <span className="mr-4">•</span>
               <span>10 min read</span>
@@ -288,7 +288,7 @@ export default function BudgetFriendlySecurity() {
                   <span className="bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">1</span>
                   <div>
                     <h5 className="font-semibold text-white">Enable MFA on all business email accounts</h5>
-                    <p className="text-blue-100">Start with Google, Microsoft, or whatever email platform you use</p>
+                    <p className="text-white">Start with Google, Microsoft, or whatever email platform you use</p>
                   </div>
                 </div>
                 
@@ -296,7 +296,7 @@ export default function BudgetFriendlySecurity() {
                   <span className="bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">2</span>
                   <div>
                     <h5 className="font-semibold text-white">Update all software and systems</h5>
-                    <p className="text-blue-100">Enable automatic updates where possible</p>
+                    <p className="text-white">Enable automatic updates where possible</p>
                   </div>
                 </div>
                 
@@ -304,7 +304,7 @@ export default function BudgetFriendlySecurity() {
                   <span className="bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">3</span>
                   <div>
                     <h5 className="font-semibold text-white">Review and clean up user accounts</h5>
-                    <p className="text-blue-100">Remove old employees, unused accounts, and excessive permissions</p>
+                    <p className="text-white">Remove old employees, unused accounts, and excessive permissions</p>
                   </div>
                 </div>
                 
@@ -312,7 +312,7 @@ export default function BudgetFriendlySecurity() {
                   <span className="bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">4</span>
                   <div>
                     <h5 className="font-semibold text-white">Test your current backups</h5>
-                    <p className="text-blue-100">Make sure you can actually restore files when needed</p>
+                    <p className="text-white">Make sure you can actually restore files when needed</p>
                   </div>
                 </div>
               </div>
@@ -482,7 +482,7 @@ export default function BudgetFriendlySecurity() {
 
             <div className="bg-blue-600 text-white rounded-lg p-8 my-12">
               <h3 className="text-2xl font-bold mb-4">Need Help Getting Started?</h3>
-              <p className="text-blue-100 mb-6">
+              <p className="text-white mb-6">
                 Arcane Digital Shield offers budget-friendly security consultations designed specifically for small businesses. We&apos;ll help you prioritize your security investments and implement the most cost-effective protections first.
               </p>
               <Link

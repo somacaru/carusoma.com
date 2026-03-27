@@ -1,7 +1,7 @@
-# Google Cloud Run Deployment Script for Arcane Digital Shield Website (PowerShell)
+aaaaaaaaaaaaaaaaaaaaaaaaaaaa# Google Cloud Run Deployment Script for Arcane Digital Shield Website (PowerShell)
 
 # Configuration
-$PROJECT_ID = "arcanedigitalshield-production"  # Replace with your actual project ID
+$PROJECT_ID = "arcanedigitalshield-web"
 $REGION = "us-central1"
 $SERVICE_NAME = "arcanedigitalshield-website"
 $IMAGE_NAME = "gcr.io/$PROJECT_ID/$SERVICE_NAME"

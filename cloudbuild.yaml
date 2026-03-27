@@ -1,11 +1,11 @@
 steps:
-  # Build the container image
+  # Build the container image (using Artifact Registry)
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/arcanedigitalshield-website:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/arcanedigitalshield-website/website:$BUILD_ID', '.']
   
-  # Push the container image to Container Registry
+  # Push the container image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/arcanedigitalshield-website:$COMMIT_SHA']
+    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/arcanedigitalshield-website/website:$BUILD_ID']
   
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -15,7 +15,7 @@ steps:
       - 'deploy'
       - 'arcanedigitalshield-website'
       - '--image'
-      - 'gcr.io/$PROJECT_ID/arcanedigitalshield-website:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/arcanedigitalshield-website/website:$BUILD_ID'
       - '--region'
       - 'us-central1'
       - '--platform'
@@ -29,6 +29,10 @@ steps:
       - '1'
       - '--max-instances'
       - '10'
+      - '--set-env-vars'
+      - 'GCS_BUCKET_NAME=arcanedigitalshield-contact-submissions'
+      - '--set-secrets'
+      - 'ADMIN_PASSWORD=admin-password:latest,ADMIN_SESSION_SECRET=admin-session-secret:latest,SMTP_USER=smtp-user:latest,SMTP_APP_PASSWORD=smtp-app-password:latest,NOTIFICATION_EMAIL=notification-email:latest'
 
 images:
-  - 'gcr.io/$PROJECT_ID/arcanedigitalshield-website:$COMMIT_SHA' 
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/arcanedigitalshield-website/website:$BUILD_ID' 

@@ -8,17 +8,17 @@ export default function IncidentResponsePlan() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="mb-4">
-              <span className="inline-block bg-blue-500 text-blue-100 px-3 py-1 rounded-full text-sm font-medium">
+              <span className="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                 Incident Response
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Incident Response Plan: Your 90-Day Implementation Guide
             </h1>
-            <p className="text-xl text-blue-100 mb-6">
+            <p className="text-xl text-white mb-6">
               Step-by-step guide to building a comprehensive incident response plan that actually works when you need it.
             </p>
-            <div className="flex items-center justify-center text-blue-100">
+            <div className="flex items-center justify-center text-white">
               <span className="mr-4">June 15, 2025</span>
               <span className="mr-4">•</span>
               <span>12 min read</span>
@@ -104,7 +104,7 @@ export default function IncidentResponsePlan() {
               <div className="space-y-6">
                 <div>
                   <h4 className="text-lg font-semibold mb-3">Week 1: Team Assembly</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-blue-100">
+                  <ul className="list-disc pl-6 space-y-2 text-white">
                     <li>Identify and recruit your incident response team members</li>
                     <li>Define roles and responsibilities for each team member</li>
                     <li>Establish communication channels and escalation procedures</li>
@@ -114,7 +114,7 @@ export default function IncidentResponsePlan() {
                 
                 <div>
                   <h4 className="text-lg font-semibold mb-3">Week 2: Asset Inventory</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-blue-100">
+                  <ul className="list-disc pl-6 space-y-2 text-white">
                     <li>Catalog all critical systems, applications, and data</li>
                     <li>Map network topology and identify critical dependencies</li>
                     <li>Document backup systems and recovery procedures</li>
@@ -124,7 +124,7 @@ export default function IncidentResponsePlan() {
                 
                 <div>
                   <h4 className="text-lg font-semibold mb-3">Week 3: Risk Assessment</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-blue-100">
+                  <ul className="list-disc pl-6 space-y-2 text-white">
                     <li>Conduct threat assessment for your industry and organization</li>
                     <li>Identify most likely attack vectors and scenarios</li>
                     <li>Assess potential business impact of different incident types</li>
@@ -134,7 +134,7 @@ export default function IncidentResponsePlan() {
                 
                 <div>
                   <h4 className="text-lg font-semibold mb-3">Week 4: Tool Selection</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-blue-100">
+                  <ul className="list-disc pl-6 space-y-2 text-white">
                     <li>Evaluate and select incident response tools and software</li>
                     <li>Set up secure communication channels for the response team</li>
                     <li>Establish logging and monitoring capabilities</li>
@@ -286,7 +286,7 @@ export default function IncidentResponsePlan() {
 
             <div className="bg-blue-600 text-white rounded-lg p-8 my-12">
               <h3 className="text-2xl font-bold mb-4">Ready to Build Your Incident Response Plan?</h3>
-              <p className="text-blue-100 mb-6">
+              <p className="text-white mb-6">
                 Arcane Digital Shield can help you develop, implement, and test a comprehensive incident response plan tailored to your business needs. Our experts have guided dozens of organizations through this critical process.
               </p>
               <Link

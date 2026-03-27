@@ -8,17 +8,17 @@ export default function AIPoweredCyberattacks() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="mb-4">
-              <span className="inline-block bg-blue-500 text-blue-100 px-3 py-1 rounded-full text-sm font-medium">
+              <span className="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                 Emerging Threats
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               AI-Powered Cyberattacks: The New Frontier of 2025
             </h1>
-            <p className="text-xl text-blue-100 mb-6">
+            <p className="text-xl text-white mb-6">
               How artificial intelligence is being weaponized by cybercriminals and what businesses need to know to stay protected.
             </p>
-            <div className="flex items-center justify-center text-blue-100">
+            <div className="flex items-center justify-center text-white">
               <span className="mr-4">June 28, 2025</span>
               <span className="mr-4">•</span>
               <span>8 min read</span>
@@ -184,7 +184,7 @@ export default function AIPoweredCyberattacks() {
 
             <div className="bg-blue-600 text-white rounded-lg p-8 my-12">
               <h3 className="text-2xl font-bold mb-4">Need Help Securing Your Business Against AI Threats?</h3>
-              <p className="text-blue-100 mb-6">
+              <p className="text-white mb-6">
                 Arcane Digital Shield specializes in helping businesses adapt their security strategies for the AI age. Our experts can assess your current vulnerabilities and implement comprehensive protection against emerging threats.
               </p>
               <Link

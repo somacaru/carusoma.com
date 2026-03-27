@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { readSubmissions, writeSubmissions } from './storage';
+import { sendContactNotification } from './email';
+import { checkRateLimit, getClientIdentifier } from './rate-limit';
+import { validateContactInput } from '@/lib/validateContact';
 
 interface ContactSubmission {
   id: string;
@@ -12,37 +15,47 @@ interface ContactSubmission {
   read: boolean;
 }
 
-// POST - Handle form submission
+// POST - Handle form submission (rate limited, validated)
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting
+    const clientId = getClientIdentifier(request);
+    const rateLimit = checkRateLimit(clientId);
+    
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again in a minute.' },
+        { 
+          status: 429,
+          headers: {
+            'Retry-After': String(Math.ceil(rateLimit.resetIn / 1000)),
+            'X-RateLimit-Remaining': '0',
+          },
+        }
+      );
+    }
+
+    // Parse and validate input (includes XSS/SQLi protection)
     const body = await request.json();
-    const { name, email, company, phone, message } = body;
-
-    // Basic validation
-    if (!name || !email || !message) {
+    const validation = validateContactInput(body);
+    
+    if (!validation.ok) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
-        { status: 400 }
+        { error: validation.error },
+        { status: validation.status }
       );
     }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email address' },
-        { status: 400 }
-      );
-    }
+    const { name, email, company, phone, message } = validation.data;
 
     // Create submission
     const submission: ContactSubmission = {
       id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      name: name.trim(),
-      email: email.trim(),
-      company: company?.trim() || '',
-      phone: phone?.trim() || '',
-      message: message.trim(),
+      name,
+      email,
+      company: company || '',
+      phone: phone || '',
+      message,
       submittedAt: new Date().toISOString(),
       read: false,
     };
@@ -53,11 +66,16 @@ export async function POST(request: NextRequest) {
     // Add new submission
     submissions.unshift(submission);
     
-    // Keep only last 1000 submissions to prevent file from growing too large
+    // Keep only last 1000 submissions
     const limitedSubmissions = submissions.slice(0, 1000);
     
-    // Write to file
+    // Write to storage
     await writeSubmissions(limitedSubmissions);
+
+    // Send email notification (don't block response)
+    sendContactNotification(submission).catch((error) => {
+      console.error('Failed to send email notification:', error);
+    });
 
     return NextResponse.json(
       { 
@@ -65,7 +83,12 @@ export async function POST(request: NextRequest) {
         message: 'Thank you for your message. We will get back to you soon!',
         id: submission.id
       },
-      { status: 201 }
+      { 
+        status: 201,
+        headers: {
+          'X-RateLimit-Remaining': String(rateLimit.remaining),
+        },
+      }
     );
   } catch (error) {
     console.error('Error processing contact form:', error);
@@ -76,7 +99,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET - Retrieve submissions (for admin page)
+// GET - Retrieve submissions (protected by middleware)
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -110,7 +133,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// PATCH - Mark submission as read/unread
+// PATCH - Mark submission as read/unread (protected by middleware)
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();

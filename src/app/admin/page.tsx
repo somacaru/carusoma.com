@@ -13,21 +13,62 @@ interface ContactSubmission {
   read: boolean;
 }
 
+const fetchOpts = { credentials: 'include' as RequestCredentials };
+
 export default function Admin() {
+  const [authenticated, setAuthenticated] = useState<boolean | null>(null);
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState<string | null>(null);
   const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showUnreadOnly, setShowUnreadOnly] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
 
+  useEffect(() => {
+    fetch('/api/auth/session', fetchOpts)
+      .then((res) => {
+        setAuthenticated(res.ok);
+      })
+      .catch(() => setAuthenticated(false));
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginError(null);
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+      credentials: 'include',
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.ok) {
+      setAuthenticated(true);
+      setPassword('');
+    } else {
+      setLoginError(data.error || 'Login failed');
+    }
+  };
+
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+    setAuthenticated(false);
+    setSubmissions([]);
+  };
+
   const fetchSubmissions = async () => {
     try {
       setLoading(true);
       setError(null);
       const url = showUnreadOnly ? '/api/contact?unreadOnly=true' : '/api/contact';
-      const response = await fetch(url);
+      const response = await fetch(url, fetchOpts);
       
       if (!response.ok) {
+        if (response.status === 401) {
+          setAuthenticated(false);
+          return;
+        }
         throw new Error('Failed to fetch submissions');
       }
       
@@ -42,18 +83,17 @@ export default function Admin() {
   };
 
   useEffect(() => {
-    fetchSubmissions();
+    if (authenticated === true) fetchSubmissions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showUnreadOnly]);
+  }, [authenticated, showUnreadOnly]);
 
   const toggleReadStatus = async (id: string, currentStatus: boolean) => {
-    try {
+      try {
       const response = await fetch('/api/contact', {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, read: !currentStatus }),
+        credentials: 'include',
       });
 
       if (response.ok) {
@@ -82,6 +122,49 @@ export default function Admin() {
     });
   };
 
+  if (authenticated === null) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600" />
+      </div>
+    );
+  }
+
+  if (!authenticated) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <form
+          onSubmit={handleLogin}
+          className="bg-white rounded-lg shadow-md p-8 w-full max-w-sm"
+        >
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Admin Login</h1>
+          <p className="text-gray-600 text-sm mb-6">Sign in to view contact submissions</p>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Password
+          </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Admin password"
+            autoComplete="current-password"
+            required
+          />
+          {loginError && (
+            <p className="mt-2 text-sm text-red-600">{loginError}</p>
+          )}
+          <button
+            type="submit"
+            className="mt-6 w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
+          >
+            Sign in
+          </button>
+        </form>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -90,11 +173,19 @@ export default function Admin() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold mb-2">Contact Submissions</h1>
-              <p className="text-blue-100">Manage and review customer inquiries</p>
+              <p className="text-white">Manage and review customer inquiries</p>
             </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold">{unreadCount}</div>
-              <div className="text-sm text-blue-100">Unread Messages</div>
+            <div className="flex items-center gap-6">
+              <div className="text-right">
+                <div className="text-2xl font-bold">{unreadCount}</div>
+                <div className="text-sm text-white">Unread Messages</div>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-md text-sm font-medium transition-colors"
+              >
+                Log out
+              </button>
             </div>
           </div>
         </div>
