@@ -58,7 +58,7 @@ export default function Home() {
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="text-white">Small-Business Security.</span>
               <br />
-              <span className="text-cyan-400 text-glow-cyan">Try-Hard by Design.</span>
+              <span className="text-cyan-400 text-glow-cyan">Try-Hard By Design.</span>
             </h1>
             
             <p className="text-xl md:text-2xl mb-4 max-w-3xl mx-auto text-slate-300">

@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Arcane Digital Shield - Small-Business Security, Try-Hard by Design | Phoenix Cybersecurity",
+  title: "Arcane Digital Shield - Small-Business Security, Try-Hard By Design | Phoenix Cybersecurity",
   description: "Cybersecurity built for small businesses in Phoenix and beyond—AI-assisted monitoring, penetration testing, SOC 2, and incident response with no excuses and no fluff.",
   keywords: "cybersecurity, Phoenix, penetration testing, SOC 2, incident response, threat detection, security audit",
 };
@@ -43,7 +43,7 @@ export default function RootLayout({
                   Elite cybersecurity team serving Phoenix businesses. AI-powered threat detection, 
                   penetration testing, and 24/7 incident response.
                 </p>
-                <p className="text-cyan-400 font-semibold text-sm">Small-business security. Try-Hard by design.</p>
+                <p className="text-cyan-400 font-semibold text-sm">Small-business security. Try-Hard By Design.</p>
               </div>
               
               {/* Services */}
