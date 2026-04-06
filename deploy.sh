@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Google Cloud Run Deployment Script for CarusoMA Website
+# Google Cloud Run Deployment Script for Arcane Digital Shield Website
 
 # Configuration
-PROJECT_ID="carusoma-production-website"  # Replace with your actual project ID
+PROJECT_ID="arcanedigitalshield-production"  # Replace with your actual project ID
 REGION="us-central1"
-SERVICE_NAME="carusoma-website"
+SERVICE_NAME="arcanedigitalshield-website"
 IMAGE_NAME="gcr.io/$PROJECT_ID/$SERVICE_NAME"
 
 # Colors for output

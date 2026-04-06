@@ -185,7 +185,7 @@ export default function AIPoweredCyberattacks() {
             <div className="bg-blue-600 text-white rounded-lg p-8 my-12">
               <h3 className="text-2xl font-bold mb-4">Need Help Securing Your Business Against AI Threats?</h3>
               <p className="text-blue-100 mb-6">
-                CarusoMA specializes in helping businesses adapt their security strategies for the AI age. Our experts can assess your current vulnerabilities and implement comprehensive protection against emerging threats.
+                Arcane Digital Shield specializes in helping businesses adapt their security strategies for the AI age. Our experts can assess your current vulnerabilities and implement comprehensive protection against emerging threats.
               </p>
               <Link
                 href="/contact"

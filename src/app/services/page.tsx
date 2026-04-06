@@ -65,10 +65,10 @@ export default function Services() {
       <section className="bg-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Comprehensive Cybersecurity Solutions
             </h1>
-            <p className="text-xl max-w-3xl mx-auto">
+            <p className="text-xl max-w-3xl mx-auto leading-relaxed text-blue-100">
               We offer a full suite of security services to protect your business from evolving threats and ensure compliance with industry standards.
             </p>
           </div>
@@ -82,18 +82,18 @@ export default function Services() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-lg overflow-hidden"
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden border border-gray-100"
               >
                 <div className="p-8">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <span className="text-4xl">{service.icon}</span>
+                      <span className="text-5xl">{service.icon}</span>
                     </div>
                     <div className="ml-6">
-                      <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                      <h2 className="text-2xl font-bold text-gray-900 mb-3">
                         {service.title}
                       </h2>
-                      <p className="text-gray-900 mb-6">{service.description}</p>
+                      <p className="text-gray-700 mb-6 leading-relaxed">{service.description}</p>
                       <ul className="space-y-3">
                         {service.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-start">
@@ -110,7 +110,7 @@ export default function Services() {
                                 d="M5 13l4 4L19 7"
                               />
                             </svg>
-                            <span className="text-gray-700">{feature}</span>
+                            <span className="text-gray-700 leading-relaxed">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -126,13 +126,13 @@ export default function Services() {
       {/* CTA Section */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to strengthen your defenses?</h2>
-          <p className="text-xl text-gray-900 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-gray-900">Ready to strengthen your defenses?</h2>
+          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
             Contact us for a personalized security strategy tailored to your business needs.
           </p>
           <Link
             href="/contact"
-            className="bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition-colors"
+            className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
           >
             Get Started Today
           </Link>
